@@ -21,3 +21,5 @@ async function connectAndInsert() {
     console.log('Disconnected from MongoDB');
   }
 }
+
+module.exports = { connectAndInsert };
