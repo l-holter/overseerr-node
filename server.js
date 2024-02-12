@@ -1,19 +1,18 @@
-const http = require('http');
 require('dotenv').config();
-const DBHandler = require('./DBHandler'); // Import the DBHandler module
+var DBHandler = require('./DBHandler.js');
+var express = require('express');
+
+const app = express();
 const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
+// Init db client
+const DBClient = new DBHandler();
 
-  // Call the connectAndInsert function from DBHandler
-  DBHandler.connectAndInsert();
-
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+app.get('/api', (req, res) => {
+  DBClient.writeToCollection();
+  res.json({ message: 'Hello API!' });
 });
 
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running at port ${port}`);
-
 });
