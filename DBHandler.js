@@ -15,7 +15,7 @@ class DBHandler {
       const database = this.client.db('overseerr');
       const collection = database.collection('connections');
   
-      const newConnection = { name: 'Example Connection' };
+      const newConnection = { name: 'Connection' , time: new Date()};
       const result = await collection.insertOne(newConnection);
       console.log('Inserted new connection:', result.insertedId);
     } catch (error) {
