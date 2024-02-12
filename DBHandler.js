@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 async function connectAndInsert() {
-  const uri = process.env.MONGO_HOST;
+  const uri = process.env.MONGO_URI;
   const client = new MongoClient(uri);
 
   try {
