@@ -2,7 +2,10 @@ require('dotenv').config();
 var DBHandler = require('./DBHandler.js');
 var express = require('express');
 
+
 const app = express();
+app.use(express.json())
+
 const port = process.env.PORT || 3000;
 
 // Init db client
@@ -16,12 +19,11 @@ app.get('/api', (req, res) => {
 app.post('/api', (req, res) => {
   // Check if request body exists
   if (!req.body) {
-    return res.status(400).json({ error: 'Request body is missing' });
+    res.status(400).json({ error: "Body missing moron! "})
   }
 
   // Serialize the request body to JSON
   const jsonData = JSON.stringify(req.body);
-  print("Json Data from request body: " + jsonData)
 
   // Call the writeToCollection method with the serialized JSON data
   DBClient.writeToCollection(jsonData);
