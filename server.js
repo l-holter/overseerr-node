@@ -26,7 +26,7 @@ app.post('/api', (req, res) => {
   const jsonData = JSON.stringify(req.body);
 
   // Call the writeToCollection method with the serialized JSON data
-  DBClient.writeToCollection(jsonData);
+  DBClient.writeConfigToCollection(jsonData);
 
   res.json({ message: 'Auth OK' });
 });
