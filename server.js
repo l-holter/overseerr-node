@@ -13,6 +13,21 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Hello API!' });
 });
 
+app.get('/api', (req, res) => {
+  // Check if request body exists
+  if (!req.body) {
+    return res.status(400).json({ error: 'Request body is missing' });
+  }
+
+  // Serialize the request body to JSON
+  const jsonData = JSON.stringify(req.body);
+
+  // Call the writeToCollection method with the serialized JSON data
+  DBClient.writeToCollection(jsonData);
+
+  res.json({ message: 'Auth OK' });
+});
+
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
 });

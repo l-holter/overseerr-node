@@ -22,6 +22,17 @@ class DBHandler {
       console.error('Error connecting to MongoDB:', error);
     }
   }
+
+  async writeConfigToCollection(jsonData) {
+    try {
+      const database = this.client.db('overseerr');
+      const collection = database.collection('configs');
+      const result = await collection.insertOne(jsonData);
+      console.log('Inserted new connection:', result.insertedId);
+    } catch (error) {
+      console.error('Error connecting to MongoDB:', error);
+    }
+  }
 }
 
 
