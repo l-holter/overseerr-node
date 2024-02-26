@@ -11,25 +11,18 @@ const port = process.env.PORT || 3000;
 // Init db client
 const DBClient = new DBHandler();
 
-app.get('/api', (req, res) => {
-  DBClient.writeToCollection();
-  res.json({ message: 'Hello API!' });
-});
-
 app.post('/api', (req, res) => {
   // Check if request body exists
   if (!req.body) {
-    res.status(400).json({ error: "Body missing moron! "})
+    res.status(400).json({ error: "Body missing."})
   }
+  console.log("RECEIVED FOLLOWING BODY")
+  console.log(req.body)
 
-  // Serialize the request body to JSON
-  const jsonData = JSON.stringify(req.body);
-  console.log(jsonData)
-
-  // Call the writeToCollection method with the serialized JSON data
+  // Write request body to database
   DBClient.writeConfigToCollection(req.body);
 
-  res.json({ message: 'Auth OK' });
+  res.json({ message: 'Content received' });
 });
 
 app.listen(port, () => {
