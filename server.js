@@ -20,7 +20,7 @@ app.post('/api', (req, res) => {
   console.log(req.body)
 
   // Write request body to database
-  DBClient.writeConfigToCollection(req.body);
+  DBClient.writeConfigToCollection(req);
 
   res.json({ message: 'Content received' });
 });
