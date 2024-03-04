@@ -1,4 +1,4 @@
-# Overseerr-Node
+# Overseerr Express.js server
 
 Overseerr-Node is a Node.js application built with Express.js, deployed on Digital Ocean. It interacts with a MongoDB database hosted on Digital Ocean.
 
@@ -48,7 +48,7 @@ Start the server
 #### Post data
 
 ```http
-  POST /endpoint
+  POST /api
 ```
 
 | Parameter | Type     | Description                |
